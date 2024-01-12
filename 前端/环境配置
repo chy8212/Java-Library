@@ -1,3 +1,6 @@
+引用：
+// https://juejin.cn/post/6844904013398278157
+
 1、vscode 下载安装
     https://code.visualstudio.com/docs/?dv=osx
 
@@ -34,6 +37,19 @@
           根据guide创建一个package.json文件： npm init
           换源：npm --registry 源地址
 
+3、package 和 package.json文件
+    package（包）是用javascript代码编写的功能包
+    package.json文件是包的描述文件，在每个项目的根目录下面：
+        描述包的信息(比如名称、版本、入口文件等)，以便发布到npm registry
+        描述项目所需的依赖包，方便通过npm install下载安装 package.json文件的字段详情介绍参考：javascript.ruanyifeng.com/nodejs/pack…
+    npm 共享 JS 代码的过程就是
+        1、有一个统一的package代码仓库 (npm官网)
+        2、编写自己的package和package.json文件(参考npm官方文档介绍)
+        3、通过 npm publish 把package放到这个仓库里
+        4、其他人的项目里想要使用某些package就写到package.json文件中，然后运行npm install，就会自动将这些代码下载下来，统一放到node_modules目录中。
+
+
+    
 
       
 
