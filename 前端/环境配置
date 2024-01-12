@@ -3,14 +3,34 @@
 
 1、vscode 下载安装
     https://code.visualstudio.com/docs/?dv=osx
+    vscode中插件安装
+        open in browser
+
 
   
 2、nodejs 下载安装
+    官网下载：nodejs.org/en/
     node -v：检查版本与安装
       
     node.js与nvm、npm的关系
       nvm
         全称是Node Version Manager，是用来管理node.js的版本的。不同的node项目所依赖的node版本可能不相同，本机也支持安装多个node版本，所以可以通过nvm来管理node的版本。
+        安装
+            安装HomeBrew：$ /usr/bin/ruby -e "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/master/install)"
+            检查安装版本：$ brew -v
+            安装 nvm：
+                $ brew install nvm
+                修改环境变量：
+                    【$ cd ~】、
+                    【$ vim .bash_profile】、在文件里添加以下内容，保存并退出
+                    export NVM_DIR="$HOME/.nvm"
+                    # This loads nvm
+                    [ -s "$NVM_DIR/nvm.sh" ] && \. "$NVM_DIR/nvm.sh"  
+                    # This loads nvm bash_completion
+                    [ -s "$NVM_DIR/bash_completion" ] && \. "$NVM_DIR/bash_completion"  
+                    输入以下命令，更新配置过的环境变量：$ source .bash_profile
+                    查看nvm版本：$ nvm --version
+                安装成功
         常用命令
           安装最新的版本：nvm install latest
           卸载某个版本：nvm uninstall 版本号
