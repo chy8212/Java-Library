@@ -1,0 +1,39 @@
+1、vscode 下载安装
+    https://code.visualstudio.com/docs/?dv=osx
+
+  
+2、nodejs 下载安装
+    node -v：检查版本与安装
+      
+    node.js与nvm、npm的关系
+      nvm
+        全称是Node Version Manager，是用来管理node.js的版本的。不同的node项目所依赖的node版本可能不相同，本机也支持安装多个node版本，所以可以通过nvm来管理node的版本。
+        常用命令
+          安装最新的版本：nvm install latest
+          卸载某个版本：nvm uninstall 版本号
+          查看当前版本：nvm version 或 nvm current
+          安装的版本列表：nvm list
+          使用固定版本：nvm use 版本号
+
+      npm
+        npm，全称是Node Package Manager，是以JavaScript编写的软件包管理工具。用来安装node项目所需要的一堆依赖包。
+        运行一些node项目时，经常需要在项目的根目录下先执行命令：npm install【该命令就是根据项目根目录下的package.json配置文件，通过npm工具来安装项目所需要的一堆依赖包。】
+        npm由来：
+          历史背景：一个前端项目想要使用其他项目的代码，即把别人写的javascript代码引入到项目中直接用，避免重复造轮子，提高开发效率，需要跑到其他项目对应的官网上去下载对应的代码放到自己的项目里，导致如果该项目需要依赖其他很多的项目，然后就要访问不同的网址去下载对应的代码。如jQuery等等。
+          npm工具：大家都把自己开发的模块打包后放到npm官网上，如果要使用，直接通过npm安装就可以直接用，不用管代码存在哪，应该从哪下载。大家也都通过npm来分享JS代码。
+        npm安装
+          npm运行在 Node上的，依赖node环境；
+          npm已经在Node.js安装的时候顺带装好了，检查：npm -v
+        npm常用命令
+          查看当前npm版本： npm -v
+          安装包
+            npm install 包名
+            npm install 包名 -g : 全局安装，安装后在命令行任意目录下可直接使用包命令
+          更新包： npm install 包名@latest
+          卸载包： npm uninstall 包名
+          根据guide创建一个package.json文件： npm init
+          换源：npm --registry 源地址
+
+
+      
+
