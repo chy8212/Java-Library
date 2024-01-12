@@ -5,6 +5,7 @@
     https://code.visualstudio.com/docs/?dv=osx
     vscode中插件安装
         open in browser
+        vetur:vue插件、高亮感知
 
 
   
@@ -69,7 +70,9 @@
         4、其他人的项目里想要使用某些package就写到package.json文件中，然后运行npm install，就会自动将这些代码下载下来，统一放到node_modules目录中。
 
 
-    
+4、git 工具安装
+    git --version 检查安装版本
+
 
       
 
