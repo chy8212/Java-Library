@@ -1,0 +1,18 @@
+ADB抓包：adb的全称是Android Debug Bridge，就是起到调试桥的作用
+  MAC使用adb抓取android日志
+    1.安装homebrew
+      /bin/zsh -c "$(curl -fsSL https://gitee.com/cunkai/HomebrewCN/raw/master/Homebrew.sh)"
+      生效：source /Users/xiaochen/.zprofile  或重启
+
+    2.安装adb
+      brew install android-platform-tools
+      查看连接：adb devices 
+
+    3.连接android手机
+      手机usb传输模式-开发者调试
+      安卓设备的开发者模式打开，提示允许adb调试
+      笔记本要和安卓设备在同一个网段下（同连一个WiFi就可以了）
+      笔记本上根据ip来连接安卓设备：adb connect 192.168.1.11
+
+    4.使用adb命令抓取日志
+      adb logcat | grep https://fat-bike.hellobike.com
