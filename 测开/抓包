@@ -16,3 +16,21 @@ ADB抓包：adb的全称是Android Debug Bridge，就是起到调试桥的作用
 
     4.使用adb命令抓取日志
       adb logcat | grep https://fat-bike.hellobike.com
+
+
+使用mac 对安卓手机抓取https 日志
+  1、通过charles，但当前charles的证书较难在高版本安卓系统中被信任，一般只作为用户ca证书，只有作为系统证书才能被信任。可设法将证书导入到系统证书中，【只有设备获得root权限才可以导入成功】
+    可以让安卓设备获得root权限之后，从charles中导出pem证书并对其重命名为 .0文件。可通过adb命令导入到系统证书目录下：/system/etc/security/cacerts。并将对应的文件夹和文件权限修改为刻度，如777，chmod 777 cacerts
+    通过安卓模拟器如夜神等，推入的系统证书也只是放在里模拟器实例的系统目录下，并未导入到真机中；
+    夜神：
+      下载安装，确保打开了root权限。
+      开发者模式，usb连接调试传输数据模式，登录后将证书拖入到模拟器窗口，自动存放在共享目录中。
+      终端，adb shell
+      连接，adb connect 127.0.0.1：62001
+      选择一个设备进入shell：adb -s 127.... shell
+      当前字符变成# ，代表已获得root权限；
+      进入系统目录，重新挂载，mount -o remount ???
+      修改系统目录权限777，可将 .0文件push或cp到cacerts目录中，之后再赋予可读权限。在模拟器的设置中的系统证书下可看到导入的charles证书。
+2、使用adb和charles、fiddler、wireshark等工具一起抓包；
+      
+
