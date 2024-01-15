@@ -1,0 +1,37 @@
+classpath和jar
+  ## classpath
+
+### classpath定义
+
+- 是一组目录的集合，是JVM用到的一个环境变量，它用来指示JVM如何搜索class。指示JVM在代码中要加载某个类时，该去哪搜索对应的.class字节码文件;
+- 设置的搜索路径格式与操作系统相关，
+    
+    Windows，分隔用；   用“”包含空格
+    
+    `C:\work\project1\bin;C:\shared;"D:\My Documents\project1\bin"`
+    
+    Linux   分隔用：
+    
+    `/usr/shared:/usr/local/bin:/home/liaoxuefeng/bin`
+    
+- JVM会依次在classpath中的各个目录中查找对应的class文件；如寻找abc.xyz.Hello类时，会依次在  目录1\abc\xyz\Hello.class，目录2\abc\xyz\Hello.class，若都没有查找到，则报错；
+
+### classpath的设定方式
+
+有两种：
+
+1. 启动JVM时设置`classpath`变量，推荐。
+    
+    实际上就是给`java`命令传入`-classpath`或`-cp`参数：
+    
+    `java -classpath .;C:\work\project1\bin;C:\shared abc.xyz.Hello`
+    
+    `java -cp .;C:\work\project1\bin;C:\shared abc.xyz.Hello`
+    
+2. 系统环境变量中设置`classpath`环境变量，不推荐；【会污染整个系统环境】
+
+注：
+
+未设系统变量&未传入-cp参数时：JVM默认的`classpath`为`.`，即当前目录；
+
+IDE运行java时，
