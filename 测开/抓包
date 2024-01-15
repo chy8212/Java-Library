@@ -32,5 +32,44 @@ ADB抓包：adb的全称是Android Debug Bridge，就是起到调试桥的作用
       进入系统目录，重新挂载，mount -o remount ???
       修改系统目录权限777，可将 .0文件push或cp到cacerts目录中，之后再赋予可读权限。在模拟器的设置中的系统证书下可看到导入的charles证书。
 2、使用adb和charles、fiddler、wireshark等工具一起抓包；
+    通过 ADB (Android Debug Bridge) 抓取 HTTPS 日志通常涉及到将 Android 设备的网络流量通过一个支持 SSL/TLS 解密的代理服务器。以下是使用 ADB 和一个代理工具（如 Charles、Fiddler 或 mitmproxy）来抓取 HTTPS 日志的步骤：
+
+    步骤 1: 设置代理服务器
+      安装并设置代理工具：
+      在你的电脑上安装一个代理工具，如 Charles、Fiddler 或 mitmproxy，并确保它配置为解密 HTTPS 流量。
       
+      配置代理监听：
+      配置你的代理工具以便在特定端口上监听网络流量。确保该端口在电脑防火墙中是开放的。
+      
+      导出并安装证书：
+      从你的代理工具中导出其根证书，并将其安装到你的 Android 设备上。这通常涉及到访问特定 URL（例如 http://charlesproxy.com/getssl），下载证书并在设备上进行安装。
+      
+    步骤 2: 配置 Android 设备
+      启用 USB 调试：
+      在 Android 设备上，进入「设置」>「系统」>「关于手机」，连续点击「版本号」7次以启用开发者选项。然后返回「系统」菜单，打开「开发者选项」，启用 USB 调试。
+      
+      连接设备至电脑：
+      使用 USB 数据线将你的 Android 设备连接到运行了代理工具的电脑。
+      
+      设置设备使用电脑网络：
+      执行以下 ADB 命令使得设备通过电脑连接到互联网：
+      
+      Bash
+      adb shell settings put global http_proxy <PROXY_IP>:<PORT>
+      其中 <PROXY_IP> 是运行代理服务的电脑 IP 地址（如果是本机可以使用 127.0.0.1），<PORT> 是代理监听端口号。
+      
+    步骤 3: 抓取 HTTPS 日志
+      开始抓包：
+      在 Android 设备上开始产生网络流量。此时，所有经过 HTTP 或 HTTPS 的请求和响应都会被发送至你的电脑上运行的代理服务，并被记录下来。
+      
+      查看和分析日志：
+      使用你选择的代理工具查看和分析捕获到的数据包。如果已正确配置 SSL/TLS 解密，则应能够看到解密后的 HTTPS 流量内容。
+      
+    步骤 4: 清除 Proxy 设置
+      清除设备 Proxy 设置：
+      完成抓包后，不要忘记清除之前设置过的全局 HTTP 代理，以免影响正常网络连接：
+      
+      Bash
+      adb shell settings put global http_proxy :0
+      请注意，在进行这些操作时要确保遵循合适隐私政策和法律规定，在拥有适当权限和知情同意时才进行此类操作。
 
